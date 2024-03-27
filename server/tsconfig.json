@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "@tsconfig/strictest",
+    "../.nuxt/tsconfig.server.json"
+  ],
+  "compilerOptions": {
+    "types": [
+      "@total-typescript/ts-reset"
+    ],
+    /* Override @tsconfig/strictest */
+    "noPropertyAccessFromIndexSignature": false
+  }
+}

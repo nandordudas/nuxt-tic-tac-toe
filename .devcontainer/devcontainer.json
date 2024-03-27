@@ -1,0 +1,138 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "Node.js & TypeScript",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "dockerFile": "./Dockerfile",
+  "runArgs": [
+    "--name=nuxt-tic-tac-toe"
+  ],
+  "mounts": [
+    {
+      "source": "${localWorkspaceFolderBasename}-pnpm-store",
+      "target": "${containerWorkspaceFolder}/.pnpm-store",
+      "type": "volume"
+    },
+    {
+      "source": "${localWorkspaceFolderBasename}-node_modules",
+      "target": "${containerWorkspaceFolder}/node_modules",
+      "type": "volume"
+    },
+    {
+      "source": "${localWorkspaceFolderBasename}-tmp",
+      "target": "${containerWorkspaceFolder}/tmp",
+      "type": "volume"
+    }
+  ],
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {
+      "omzPlugins": "https://github.com/z-shell/F-Sy-H https://github.com/zsh-users/zsh-autosuggestions",
+      "plugins": "F-Sy-H zsh-autosuggestions"
+    },
+    "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  "postCreateCommand": {
+    "setupFolderPrivileges": "sudo chown --recursive node .pnpm-store node_modules tmp",
+    "installDependencies": "pnpm install"
+  },
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "eamodio.gitlens",
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
+        "ibm.output-colorizer",
+        "mhutchie.git-graph",
+        "mutantdino.resourcemonitor",
+        "orta.vscode-twoslash-queries",
+        "sonarsource.sonarlint-vscode",
+        "streetsidesoftware.code-spell-checker",
+        "timonwong.shellcheck",
+        "usernamehw.errorlens",
+        "vitest.explorer",
+        "vue.volar",
+        "yoavbls.pretty-ts-errors"
+      ],
+      "settings": {
+        // Auto fix
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit",
+          "source.organizeImports": "never"
+        },
+        "editor.formatOnSave": false,
+        // Enable the ESLint debugger if you are interested
+        "eslint.debug": false,
+        // Enable the ESlint flat config support
+        "eslint.experimental.useFlatConfig": true,
+        // Silent the stylistic rules in you IDE, but still auto fix them
+        "eslint.rules.customizations": [
+          {
+            "rule": "*-dangle",
+            "severity": "off"
+          },
+          {
+            "rule": "*-indent",
+            "severity": "off"
+          },
+          {
+            "rule": "*-newline",
+            "severity": "off"
+          },
+          {
+            "rule": "*-order",
+            "severity": "off"
+          },
+          {
+            "rule": "*-spaces",
+            "severity": "off"
+          },
+          {
+            "rule": "*-spacing",
+            "severity": "off"
+          },
+          {
+            "rule": "*quotes",
+            "severity": "off"
+          },
+          {
+            "rule": "*semi",
+            "severity": "off"
+          },
+          {
+            "rule": "format/*",
+            "severity": "off"
+          },
+          {
+            "rule": "style/*",
+            "severity": "off"
+          }
+        ],
+        "eslint.runtime": "/usr/local/bin/node",
+        // Enable ESLint for all supported languages
+        "eslint.validate": [
+          "css",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "json",
+          "jsonc",
+          "markdown",
+          "toml",
+          "typescript",
+          "typescriptreact",
+          "vue",
+          "yaml"
+        ],
+        // Disable the default formatter, use ESLint instead
+        "prettier.enable": false
+      }
+    }
+  }
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
