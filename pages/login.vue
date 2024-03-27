@@ -31,7 +31,7 @@ function mockLogin(_event: FormSubmitEvent<Schema>): void {
   <UCard class="w-96">
     <UForm class="space-y-4" :state :schema @submit="mockLogin">
       <UFormGroup label="Email" name="email">
-        <UInput v-model="state.email" placeholder="Email" autocomplete="username" />
+        <UInput v-model="state.email" placeholder="Email" type="email" autocomplete="username" />
       </UFormGroup>
 
       <UFormGroup label="Password" name="password">
