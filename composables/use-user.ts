@@ -8,6 +8,4 @@ const user: User = {
   name: null,
 }
 
-export default (): Ref<User> => {
-  return useState('user', () => user)
-}
+export const useUser = (): Ref<User> => useState<User>('user', () => user)

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <UContainer class="h-screen grid place-items-center" as="main">
     <slot />
-  </div>
+  </UContainer>
 </template>

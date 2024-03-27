@@ -54,6 +54,10 @@ export default defineNuxtConfig({
       globals: true,
     },
   },
+
+  ui: {
+    icons: ['simple-icons'],
+  },
 })
 
 async function isReadable(path: string): Promise<boolean> {
