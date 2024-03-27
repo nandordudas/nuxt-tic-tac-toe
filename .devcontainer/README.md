@@ -16,6 +16,16 @@ printenv | sort | grep NODE_VERSION
 - [Docker Compose specific properties]
 - [Image or Dockerfile specific properties]
 
+## [Run your GitHub Actions locally 🚀]
+
+`act` is preinstalled, so just use it.
+
+```bash
+act
+```
+
+[Run your GitHub Actions locally 🚀]: https://github.com/nektos/act
+
 [Use an env file]: https://code.visualstudio.com/remote/advancedcontainers/environment-variables#_option-2-use-an-env-file
 [Docker Compose specific properties]: https://containers.dev/implementors/json_reference/#compose-specific
 [Image or Dockerfile specific properties]: https://containers.dev/implementors/json_reference/#image-specific
