@@ -16,7 +16,7 @@ FROM mcr.microsoft.com/devcontainers/typescript-node:1-${VARIANT}
 #   rm -rf /var/lib/{apt,cache,dpkg,log}
 
 # https://www.npmjs.com/package/firebase-tools
-ENV DEPENDENCIES="@antfu/ni npkill taze"
+ENV DEPENDENCIES="@antfu/ni npkill npm@latest pnpm@latest taze"
 
 RUN \
   corepack enable && \
