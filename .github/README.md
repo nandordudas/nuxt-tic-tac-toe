@@ -1,7 +1,7 @@
 # Nuxt 3 Minimal Starter
 
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
-[![CI](https://github.com/nandordudas/nuxt-core/actions/workflows/ci.yml/badge.svg)](https://github.com/nandordudas/nuxt-core/actions/workflows/ci.yml)
+[![CI](https://github.com/nandordudas/nuxt-tic-tac-toe/actions/workflows/ci.yml/badge.svg)](https://github.com/nandordudas/nuxt-tic-tac-toe/actions/workflows/ci.yml)
 
 ## [mkcert]
 
@@ -10,7 +10,7 @@ mkcert -install
 mkcert localhost 127.0.0.1 ::1
 ```
 
-Copy `localhost+2.pem` and `localhost+2-key.pem` to `/tmp` folder and set file paths in the `.env.local` file.
+Copy `localhost+2.pem` and `localhost+2-key.pem` to `/tmp` folder.
 
 ## Setup
 

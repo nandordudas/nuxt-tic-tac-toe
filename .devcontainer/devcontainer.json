@@ -38,7 +38,8 @@
   // "forwardPorts": [],
   "postCreateCommand": {
     "setupFolderPrivileges": "sudo chown --recursive node .pnpm-store node_modules tmp",
-    "installDependencies": "pnpm install"
+    "installDependencies": "pnpm install",
+    "setupEnv": "cp --no-clobber .env.example .env.local"
   },
   // Configure tool-specific properties.
   "customizations": {
