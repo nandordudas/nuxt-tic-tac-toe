@@ -1,3 +1,5 @@
+import type { Awaitable } from '@antfu/eslint-config'
+
 import { access, constants } from 'node:fs/promises'
 
 interface DevServerHttps {
