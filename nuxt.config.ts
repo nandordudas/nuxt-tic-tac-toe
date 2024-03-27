@@ -1,16 +1,13 @@
-import { accessSync, constants } from 'node:fs'
-import { env } from 'node:process'
+import { access, constants } from 'node:fs/promises'
 
 interface DevServerHttps {
   cert: string
   key: string
 }
 
-// const { pathname: srcRoot } = new URL('.', import.meta.url)
-
 const httpsServerFiles: DevServerHttps = {
-  cert: env.DEV_SERVER_CERT,
-  key: env.DEV_SERVER_KEY,
+  cert: import.meta.env.DEV_SERVER_CERT,
+  key: import.meta.env.DEV_SERVER_KEY,
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -59,13 +56,8 @@ export default defineNuxtConfig({
   },
 })
 
-function isReadable(path: string): boolean {
-  const accessMode = constants.R_OK
-
-  try {
-    return accessSync(path, accessMode) === undefined
-  }
-  catch {
-    return false
-  }
+async function isReadable(path: string): Promise<boolean> {
+  return access(path, constants.R_OK)
+    .then(() => true)
+    .catch(() => false)
 }
