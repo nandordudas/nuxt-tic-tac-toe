@@ -7,6 +7,7 @@ export default antfu(
   {
     rules: {
       'complexity': ['error', 5],
+      'nuxt/prefer-import-meta': 'error',
       'perfectionist/sort-objects': 'error',
       'ts/explicit-function-return-type': 'error',
     },
