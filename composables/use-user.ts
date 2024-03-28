@@ -1,7 +1,4 @@
-interface User {
-  name: string | null
-  email: string | null
-}
+import type { User } from '~/types'
 
 const user: User = {
   email: null,

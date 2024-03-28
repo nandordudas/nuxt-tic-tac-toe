@@ -29,6 +29,10 @@ export default defineNuxtConfig({
     },
   },
 
+  experimental: {
+    typedPages: true,
+  },
+
   modules: [
     '@nuxt/eslint',
     '@vueuse/nuxt',

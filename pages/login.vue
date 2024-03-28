@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { z } from 'zod'
 
+import type { UserWithPassword } from '~/types'
+
 import type { FormSubmitEvent } from '#ui/types'
 
 const schema = z.object({
@@ -10,20 +12,18 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>
 
-const state = shallowReactive({
-  email: '',
-  password: '',
+const state = shallowReactive<UserWithPassword>({
+  email: null,
+  name: null,
+  password: null,
 })
 
-const user = useUser()
+const { login } = useLobbyStore()
 
 function mockLogin(_event: FormSubmitEvent<Schema>): void {
-  user.value = {
-    email: state.email,
-    name: 'John Doe',
-  }
+  login(state)
 
-  navigateTo('/dashboard')
+  navigateTo('/lobby')
 }
 </script>
 

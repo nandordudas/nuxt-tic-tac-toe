@@ -1,11 +1,15 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: ['01-authenticated'],
+  // middleware: ['01-authenticated'],
 })
+
+const lobbyStore = useLobbyStore()
 </script>
 
 <template>
   <div>
-    lobby
+    <p>lobby</p>
+
+    {{ lobbyStore.state }}
   </div>
 </template>
