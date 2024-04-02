@@ -1,5 +1,3 @@
-import type { JWTPayload } from 'jose'
-
 import type { User } from './types'
 
 declare module 'nuxt/schema' {
