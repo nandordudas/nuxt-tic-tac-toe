@@ -1,23 +1,12 @@
 <script setup lang="ts">
-import { z } from 'zod'
+import type { z } from 'zod'
 
 import type { FormSubmitEvent } from '#ui/types'
 
 const { register } = useAuthStore()
 const [isPasswordVisible, togglePasswordVisibility] = useToggle()
 
-// INFO: similar schema in LoginForm
-const schema = z.object({
-  confirmPassword: z.string().min(8, 'Must be at least 8 characters'),
-  email: z.string().email('Invalid email'),
-  password: z.string().min(8, 'Must be at least 8 characters'),
-})
-  .refine(({ confirmPassword, password }) => confirmPassword === password, {
-    message: 'Passwords do not match',
-    path: ['confirmPassword'],
-  })
-
-type Schema = z.output<typeof schema>
+type Schema = z.output<typeof registerFormSchema>
 
 const state = shallowReactive<Schema>({
   confirmPassword: '',
@@ -37,7 +26,7 @@ const confirmPasswordFieldAttributes = computed(() => ({
 
 <template>
   <UCard class="w-96">
-    <UForm class="space-y-4" :state :schema @submit="onSubmit">
+    <UForm class="space-y-4" :state :schema="registerFormSchema" @submit="onSubmit">
       <UFormGroup label="Email" name="email">
         <UInput v-model="state.email" placeholder="Email" type="email" autocomplete="username" />
       </UFormGroup>

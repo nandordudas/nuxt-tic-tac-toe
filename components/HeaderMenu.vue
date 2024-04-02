@@ -6,6 +6,7 @@ const links = computed(() => {
   const leftSideLinks = [
     { label: 'Home', to: '/' },
     authStore.isAuthenticated ? { label: 'Dashboard', to: '/dashboard' } : undefined,
+    authStore.isAuthenticated ? { label: 'Lobby', to: '/lobby' } : undefined,
     authStore.isAuthenticated ? { label: 'Game', to: '/game' } : undefined,
   ].filter(Boolean)
 

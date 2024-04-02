@@ -1,13 +1,12 @@
 import { consola } from 'consola'
 import type { JWTPayload } from 'jose'
 
-import type { User, UserWithPassword } from '~/types'
+import type { UserWithPassword } from '~/types'
 
 export default defineEventHandler(async (event) => {
-  if (getCookie(event, 'token'))
+  if (event.context.auth)
     throw createError({ statusCode: 401, statusMessage: 'Already logged in' })
 
-  const config = useRuntimeConfig()
   const body = await readValidatedBody(event, userSchema.safeParse)
 
   if (!body.success) {
@@ -15,7 +14,11 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Invalid body' })
   }
 
-  const user = await createUser(body.data)
+  const user = await getUserByEmail(body.data.email)
+
+  ensurePassword(body.data.password, user.password)
+
+  const config = useRuntimeConfig()
   const token = await signToken({ ...user } satisfies JWTPayload, config.jwtSecret)
 
   setCookie(event, 'token', token, {
@@ -34,6 +37,11 @@ export default defineEventHandler(async (event) => {
 })
 
 // TODO: move mock to a separate file
-async function createUser(user: Omit<UserWithPassword, 'id'>): Promise<User> {
-  return { email: user.email, id: 0 }
+async function getUserByEmail(email: string): Promise<UserWithPassword> {
+  return {
+    email,
+    id: 1,
+    // TODO: remove mock password
+    password: '1862047a04d2450f15dcfcdeb2a02d7288def043a3b386c509d07e92224ad7a8',
+  }
 }

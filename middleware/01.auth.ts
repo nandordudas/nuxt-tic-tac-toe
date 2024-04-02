@@ -11,7 +11,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
   if (!token.value) {
     abortNavigation()
 
-    return await navigateTo({ path: '/login', query: { redirect: to.fullPath } })
+    return navigateTo({ path: '/login', query: { redirect: to.fullPath } })
   }
 
   const config = useRuntimeConfig()

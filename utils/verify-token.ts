@@ -8,5 +8,5 @@ export async function verifyToken(data: string, secret: string): Promise<JWTVeri
 
   consola.info('Verifying JWT')
 
-  return await jwtVerify(data, key)
+  return jwtVerify(data, key)
 }

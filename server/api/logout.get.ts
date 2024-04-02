@@ -1,7 +1,7 @@
 import { consola } from 'consola'
 
 export default defineEventHandler((event) => {
-  if (!getCookie(event, 'token')) {
+  if (!event.context.auth) {
     consola.info('User not logged in')
 
     return
