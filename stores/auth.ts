@@ -1,10 +1,16 @@
-import type { UserWithPassword } from '~/types'
+import type { Nullable, User, UserWithPassword } from '~/types'
+
+interface State {
+  isAuthenticated: boolean
+  user: Nullable<User>
+}
 
 export const useAuthStore = defineStore('auth', () => {
   const { finish, start } = useLoadingIndicator()
 
-  const state = reactive({
+  const state = reactive<State>({
     isAuthenticated: false,
+    user: null,
   })
 
   async function navigateToDashboard(): Promise<ReturnType<typeof navigateTo>> {

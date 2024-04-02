@@ -18,11 +18,12 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const authStore = useAuthStore()
 
   try {
-    await verifyToken(token.value, config.jwtSecret)
+    const result = await verifyToken(token.value, config.jwtSecret)
 
     consola.info('Decoded JWT')
 
     authStore.isAuthenticated = true
+    authStore.user = result.payload
   }
   catch (error) {
     consola.error(error)

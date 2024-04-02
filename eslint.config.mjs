@@ -13,19 +13,19 @@ export default antfu(
     },
   },
 )
-  .override(
-    'antfu:imports',
-    {
-      rules: {
-        'import/order': ['error', {
-          'alphabetize': { caseInsensitive: true, order: 'asc' },
-          'groups': ['external', 'builtin', ['sibling', 'parent'], 'index', 'object'],
-          'newlines-between': 'always',
-          'pathGroups': [
-            { group: 'external', pattern: '~/**', position: 'after' },
-          ],
-        }],
-      },
-    },
-  )
+  // .override(
+  //   'antfu/imports',
+  //   {
+  //     rules: {
+  //       'import/order': ['error', {
+  //         'alphabetize': { caseInsensitive: true, order: 'asc' },
+  //         'groups': ['external', 'builtin', ['sibling', 'parent'], 'index', 'object'],
+  //         'newlines-between': 'always',
+  //         'pathGroups': [
+  //           { group: 'external', pattern: '~/**', position: 'after' },
+  //         ],
+  //       }],
+  //     },
+  //   },
+  // )
   .append(nuxt())

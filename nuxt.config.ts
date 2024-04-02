@@ -40,6 +40,12 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
 
+  nitro: {
+    experimental: {
+      websocket: true,
+    },
+  },
+
   runtimeConfig: {
     app: {
       jwtSecret: '',

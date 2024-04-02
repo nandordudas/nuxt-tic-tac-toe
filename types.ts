@@ -11,3 +11,10 @@ export interface User extends Entity {
 export interface UserWithPassword extends User {
   password: string
 }
+
+/*  */
+
+export interface Payload {
+  message: string
+  user: string
+}

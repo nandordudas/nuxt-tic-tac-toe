@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
 async function getUserByEmail(email: string): Promise<UserWithPassword> {
   return {
     email,
-    id: Number.NaN,
+    id: 1,
     // TODO: remove mock password
     password: '1862047a04d2450f15dcfcdeb2a02d7288def043a3b386c509d07e92224ad7a8',
   }
