@@ -6,8 +6,6 @@ useHead({
 
 <template>
   <div>
-    <UContainer class="h-screen">
-      index
-    </UContainer>
+    index
   </div>
 </template>

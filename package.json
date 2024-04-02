@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "nuxt build",
+    "cleanup": "nuxt cleanup",
     "dedupe": "pnpm dedupe --check || pnpm dedupe",
     "dev": "nuxt dev --dotenv .env.local",
     "generate": "nuxt generate",

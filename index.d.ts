@@ -1,21 +1,9 @@
 declare module 'nuxt/schema' {
-  interface RuntimeConfig {
-    apiSecret: string
-  }
+  interface AppConfigInput {}
 
-  interface PublicRuntimeConfig {
-    apiBase: string
-  }
+  interface PublicRuntimeConfig {}
 
-  interface AppConfigInput {
-    foo: string
-  }
-}
-
-declare module '#app' {
-  interface PageMeta {
-    pageType?: string
-  }
+  interface RuntimeConfig {}
 }
 
 export {}

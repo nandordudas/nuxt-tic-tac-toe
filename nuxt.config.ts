@@ -1,4 +1,4 @@
-import { access, constants } from 'node:fs/promises'
+import { accessSync, constants } from 'node:fs'
 
 interface DevServerHttps {
   cert: string
@@ -10,10 +10,8 @@ const httpsServerFiles: DevServerHttps = {
   key: import.meta.env.DEV_SERVER_KEY,
 }
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    // https://nuxt.com/docs/getting-started/seo-meta
     head: {
       titleTemplate: '%s - Tic Tac toe',
     },
@@ -42,13 +40,12 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
   ],
 
-  // https://nuxt.com/docs/guide/going-further/runtime-config
   runtimeConfig: {
     app: {
-      apiSecret: '', // can be overridden by NUXT_API_SECRET environment variable
+      apiSecret: '',
     },
     public: {
-      apiBase: '', // can be overridden by NUXT_PUBLIC_API_BASE environment variable
+      apiBase: '',
     },
   },
 
@@ -64,8 +61,16 @@ export default defineNuxtConfig({
   },
 })
 
-async function isReadable(path: string): Promise<boolean> {
-  return access(path, constants.R_OK)
-    .then(() => true)
-    .catch(() => false)
+function isReadable(path: string | undefined): boolean {
+  if (!path)
+    return false
+
+  try {
+    accessSync(path, constants.R_OK)
+
+    return true
+  }
+  catch {
+    return false
+  }
 }
