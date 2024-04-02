@@ -11,6 +11,9 @@ dependencies:
   '@nuxt/ui':
     specifier: ^2.15.0
     version: 2.15.0(nuxt@3.11.1)(vite@5.1.6)(vue@3.4.21)
+  jose:
+    specifier: ^5.2.3
+    version: 5.2.3
   vue:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.4.2)
@@ -6178,6 +6181,10 @@ packages:
   /jiti@1.21.0:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
+
+  /jose@5.2.3:
+    resolution: {integrity: sha512-KUXdbctm1uHVL8BYhnyHkgp3zDX5KW8ZhAKVFEfUbU2P8Alpzjb+48hHvjOdQIyPshoblhzsuqOwEEAbtHVirA==}
+    dev: false
 
   /js-beautify@1.15.1:
     resolution: {integrity: sha512-ESjNzSlt/sWE8sciZH8kBF8BPlwXPwhR6pWKAw8bw4Bwj+iZcnKW6ONWUutJ7eObuBZQpiIb8S7OYspWrKt7rA==}

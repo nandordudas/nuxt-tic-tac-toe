@@ -25,6 +25,7 @@
   "dependencies": {
     "@iconify-json/simple-icons": "^1.1.97",
     "@nuxt/ui": "^2.15.0",
+    "jose": "^5.2.3",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
     "zod": "^3.22.4"

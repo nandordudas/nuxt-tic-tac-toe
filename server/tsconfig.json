@@ -9,5 +9,8 @@
     ],
     /* Override @tsconfig/strictest */
     "noPropertyAccessFromIndexSignature": false
-  }
+  },
+  "exclude": [
+    "../eslint.config.mjs"
+  ]
 }

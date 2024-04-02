@@ -42,10 +42,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     app: {
-      apiSecret: '',
-    },
-    public: {
-      apiBase: '',
+      jwtSecret: '',
     },
   },
 
