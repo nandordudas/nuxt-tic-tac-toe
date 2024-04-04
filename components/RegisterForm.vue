@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { z } from 'zod'
 
-import type { FormSubmitEvent } from '#ui/types'
+const emit = defineEmits(['submit'])
 
 const { register } = useAuthStore()
+
 const [isPasswordVisible, togglePasswordVisibility] = useToggle()
 
 type Schema = z.output<typeof registerFormSchema>
@@ -14,14 +15,14 @@ const state = shallowReactive<Schema>({
   password: '',
 })
 
-function onSubmit({ data }: FormSubmitEvent<Schema>): void {
-  register({ email: data.email, password: data.password })
-}
-
 const confirmPasswordFieldAttributes = computed(() => ({
   icon: isPasswordVisible.value ? 'i-heroicons-eye' : 'i-heroicons-eye-slash',
   type: isPasswordVisible.value ? 'text' : 'password',
 } as const))
+
+function onSubmit(): void {
+  emit('submit', { data: state }, register)
+}
 </script>
 
 <template>
