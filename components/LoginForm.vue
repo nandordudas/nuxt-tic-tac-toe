@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { z } from 'zod'
 
-import type { FormSubmitEvent } from '#ui/types'
+const emit = defineEmits(['submit'])
 
-const authStore = useAuthStore()
+const { login } = useAuthStore()
 
 type Schema = z.output<typeof loginFormSchema>
 
@@ -12,8 +12,8 @@ const state = shallowRef<Schema>({
   password: '',
 })
 
-function onSubmit(event: FormSubmitEvent<Schema>): void {
-  authStore.login(event.data)
+function onSubmit(): void {
+  emit('submit', { data: state.value }, login)
 }
 </script>
 
