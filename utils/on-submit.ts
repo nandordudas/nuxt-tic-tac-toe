@@ -4,8 +4,7 @@ import type { UserWithPassword } from '~/types'
 
 import type { FormSubmitEvent } from '#ui/types'
 
-// TODO: add better type definition
-type FormSchema = z.output<typeof registerFormSchema> | z.output<typeof loginFormSchema>
+type FormSchema = z.output<typeof registerFormSchema | typeof loginFormSchema>
 
 export function onSubmit(
   { data }: FormSubmitEvent<FormSchema>,
