@@ -3,8 +3,6 @@ import type { z } from 'zod'
 
 const emit = defineEmits(['submit'])
 
-const { register } = useAuthStore()
-
 const [isPasswordVisible, togglePasswordVisibility] = useToggle()
 
 type Schema = z.output<typeof registerFormSchema>
@@ -21,7 +19,7 @@ const confirmPasswordFieldAttributes = computed(() => ({
 } as const))
 
 function onSubmit(): void {
-  emit('submit', { data: state }, register)
+  emit('submit', { data: state })
 }
 </script>
 
