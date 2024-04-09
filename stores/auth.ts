@@ -1,9 +1,13 @@
 import type { Nullable, User, UserWithPassword } from '~/types'
 
+import type { FormSubmitEvent } from '#ui/types'
+
 interface State {
   isAuthenticated: boolean
   user: Nullable<User>
 }
+
+type UserAuthenticationEvent = FormSubmitEvent<Omit<UserWithPassword, 'id'>>
 
 export const useAuthStore = defineStore('auth', () => {
   const { finish, start } = useLoadingIndicator()
@@ -30,13 +34,13 @@ export const useAuthStore = defineStore('auth', () => {
     state.isAuthenticated = false
   }
 
-  async function login(user: Omit<UserWithPassword, 'id'>): Promise<void> {
-    await $fetch('/api/login', { body: user, method: 'post' })
+  async function login(event: UserAuthenticationEvent): Promise<void> {
+    await $fetch('/api/login', { body: event.data, method: 'post' })
     await navigateToDashboard()
   }
 
-  async function register(user: Omit<UserWithPassword, 'id'>): Promise<void> {
-    await $fetch('/api/register', { body: user, method: 'post' })
+  async function register(event: UserAuthenticationEvent): Promise<void> {
+    await $fetch('/api/register', { body: event.data, method: 'post' })
     await navigateToDashboard()
   }
 
