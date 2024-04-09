@@ -12,6 +12,6 @@ useHead({
 
 <template>
   <div class="grid place-items-center h-[calc(100vh-49px-16px)]">
-    <LoginForm @submit="({ data }) => login(data)" />
+    <LoginForm @submit="({ data }) => { login(data) }" />
   </div>
 </template>
