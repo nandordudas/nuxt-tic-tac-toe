@@ -3,8 +3,6 @@ import type { z } from 'zod'
 
 const emit = defineEmits(['submit'])
 
-const { login } = useAuthStore()
-
 type Schema = z.output<typeof loginFormSchema>
 
 const state = shallowRef<Schema>({
@@ -13,7 +11,7 @@ const state = shallowRef<Schema>({
 })
 
 function onSubmit(): void {
-  emit('submit', { data: state.value }, login)
+  emit('submit', { data: state.value })
 }
 </script>
 
